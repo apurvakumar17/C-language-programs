@@ -43,6 +43,24 @@ int xstrncmp(const char *str1, const char *str2, int ln) {
     return 0; // Strings are equal for the first 'ln' characters
 }
 
+int xstrnicmp(const char *str1, const char *str2, int ln) {
+    char ex1, ex2;
+    while (ln > 0) {
+        ex1 = tolower((unsigned char)*str1);
+        ex2 = tolower((unsigned char)*str2);
+
+        if (*str1 != *str2) {
+            return (*str1 - *str2); // Difference between characters
+        }
+        if (*str1 == '\0' || *str2 == '\0') {
+            break; // Stop if either string ends
+        }
+        str1++;
+        str2++;
+        ln--;
+    }
+}
+
 int main() {
     char string1[] = "Jerry";
     char string2[] = "Ferry";
