@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int main() {
     FILE* fptr;
@@ -11,7 +12,7 @@ int main() {
         fputc('\n', fptr);
     }
     rewind(fptr);
-    char gch;
-    while (fgetc())
+    char cho[10] = "01";
+    printf("%d", strlen(cho));
     fclose(fptr);
 }
