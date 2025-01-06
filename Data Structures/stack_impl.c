@@ -23,6 +23,8 @@ void pop (int* stack) {
         printf("Element poped: %d", *(stack + size - 1));
         size--;
         stack = (int*) realloc(stack, size * sizeof(int));
+    } else {
+        printf("Stack is empty !!");
     }
 }
 
