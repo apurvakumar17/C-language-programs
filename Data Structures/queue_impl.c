@@ -83,5 +83,6 @@ int main() {
 
     display(queue, size);
     showMenu(queue);
+    free(queue);
     return 0;
 }

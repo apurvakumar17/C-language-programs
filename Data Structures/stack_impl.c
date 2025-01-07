@@ -73,4 +73,6 @@ int main() {
 
     display(stack, size);
     showMenu(stack);
+    free(stack);
+    return 0;
 }
