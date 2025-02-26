@@ -1,0 +1,8 @@
+Dear Students, prepare DS Practical file take out printout of these 5 questions [Program, Source Code and Output screen shot] and get it checked on 24 and 25 Feb 2025. Files will not be checked afterwards.
+
+Q1. Write a program to accept 5 integers in array. Accept the location and delete the number and shift rest element towards left.
+Q2. Create 2D array Arr[4][5], accept values. Display computed address of Arr[2][3] and actual compiler defined address.
+Q3. WAP to store tridiagonal matrix in 1D array
+Q4. WAP to accept sparse matrix 3x4 and store it in 3-tupple representation and display in 3x4 format.
+Q5. Company wants to store Aadhar No. of 150 employees. Store 10 aadhar no. using hashing division method and retrieve the location of an aadhar entered by user in array. Use  two methods to store data in two arrays Arr1 and Arr2
+i) Mid Square Method ii) Folding Method
