@@ -4,74 +4,65 @@ struct node {
     int data;
     struct node* next;
 };
-struct node* insert_beg(struct node* head, int data1) {
-    struct node* ptr = (struct node*) malloc(sizeof(struct node));
-    if (ptr == NULL) {
-        printf("Memory Allocation Failed.");
-        return head;
-    }
-    ptr -> data = data1;
-    ptr -> next = head;
-    return ptr;
-}
-struct node* insert_end(struct node* head, int data1) {
-    struct node* ptr = (struct node*) malloc(sizeof(struct node));
-    struct node* temp = head;
-    if (ptr == NULL) {
-        printf("Memory Allocation Failed.");
-        return head;
-    }
-    while (temp -> next == NULL) {
-        temp = temp -> next;
-    }
-    temp->next = ptr;
-    return head;
-}
-void display(struct node* head) {
-    if (head == NULL) {
-        printf("Linked list is empty.\n");
-        return;
-    }
-    struct node* temp = head;
-    printf("Linked List: ");
-    while (temp != NULL) {
-        printf("%d -> ", temp->data);
-        temp = temp->next;
-    }
-    printf("NULL\n");
-}
 int main() {
+    int dt,ch;
     struct node* head = NULL;
-    int ch, data;
-    while (1) {
-        printf("\n1. Add node at beginning\n");
-        printf("2. Add node at end\n");
-        printf("3. Display Linked List\n");
-        printf("4. Exit\n");
-        printf("Enter your choice: ");
+    while(1) {
+        printf("\n__LINKED LIST__");
+        printf("\n1. Enter data at beginning.");
+        printf("\n2. Enter data at end.");
+        printf("\n11. Display linked list.");
+        printf("\n12. Exit");
+        printf("\nEnter your choice: ");
         scanf("%d", &ch);
-
         switch(ch) {
-            case 1: 
-                printf("Enter data: ");
-                scanf("%d", &data);
-                head = insert_beg(head, data);
-                printf("Data inserted to linked list...");
+            case 1: {
+                struct node* ptr = (struct node*) malloc(sizeof(struct node));
+                printf("Enter data to store: ");
+                scanf("%d", &dt);
+                ptr->data = dt;
+                ptr->next = head;
+                head = ptr;
+                printf("\nNode added at beginning!");
                 break;
-            case 2:
-                printf("Enter data: ");
-                scanf("%d", &data);
-                head = insert_end(head, data);
-                printf("Data inserted to linked list...");
+            }
+            case 2: {
+                struct node* ptr = (struct node*) malloc(sizeof(struct node));
+                struct node* temp = head;
+                printf("Enter data to store: ");
+                scanf("%d", &dt);
+                ptr->data = dt;
+                ptr->next = NULL;
+                if (head == NULL) {
+                    head = ptr;
+                    break;
+                }
+                while(temp->next != NULL) {
+                    temp = temp->next;
+                }
+                temp->next = ptr;
+                printf("\nNode added at ending!");
                 break;
-            case 3:
-                display(head);
+            }
+            case 11: {
+                if (head == NULL) {
+                    printf("\nLinked List is Empty");
+                    break;
+                }
+                struct node* temp = head;
+                while(temp->next != NULL) {
+                    printf("[%d]-", temp->data);
+                    temp = temp->next;
+                }
+                printf("[%d]\n", temp->data);
                 break;
-            case 4:
-                printf("Exiting...\n");
+            }
+            case 12: {
+                printf("Good Bye\nBy Apurva Kumar");
                 return 0;
-            default:
-                printf("Invalid choice! Try again.\n");
+            }
+            default: 
+                printf("Invalid Option...Choose Again!");
         }
     }
 }
