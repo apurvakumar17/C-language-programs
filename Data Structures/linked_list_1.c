@@ -15,9 +15,10 @@ int main() {
     printf("7. Delete node at end.\n");
     printf("8. Delete node at specific location.\n");
     printf("9. Delete node with specific location.\n");
-    printf("10. Sort in ascending order\n");
-    printf("11. Display linked list\n");
-    printf("12. Exit\n");
+    printf("10. Reverse the list.\n");
+    printf("11. Sort in ascending order\n");
+    printf("12. Display linked list\n");
+    printf("13. Exit\n");
     struct node* start = NULL;
     int ch;
     while (1) {
@@ -155,7 +156,100 @@ int main() {
                     break;
                 }
             }
-            case 11: {
+            case 7: {
+                struct node* temp = start;
+                if (temp == NULL) {
+                    printf("Linked List Empty!\n");
+                } else if(temp->next == NULL) {
+                    printf("Last Node Deleted!\n");
+                    free(temp);
+                    start = NULL;
+                } else {
+                    while (temp->next->next != NULL) {
+                        temp = temp->next;
+                    }
+                    free(temp->next);
+                    temp->next = NULL;
+                    printf("Last Node Deleted!\n");
+                }
+                break;
+            }
+            case 8: {
+                int loc = 0;
+                struct node* temp = start;
+                struct node* ptemp = start;
+                printf("Enter the location: ");
+                scanf("%d", &loc);
+                if (loc == 1) {
+                    start = temp->next;
+                    free(temp);
+                    printf("Node Deleted!\n");
+                    break;
+                } else {
+                    temp = temp->next;
+                    while (loc != 2) {
+                        temp = temp->next;
+                        ptemp = ptemp->next;
+                        loc--;
+                    }
+                    ptemp->next = temp->next;
+                    free(temp);
+                    printf("Node Deleted!\n");
+                    break;
+                }
+                
+            }
+            case 9: {
+                int value;
+                printf("Enter value to delete: ");
+                scanf("%d", &value);
+                struct node* ptemp = start;
+                struct node* temp = start;
+                if (temp->data == value) {
+                    start = temp->next;
+                    free(temp);
+                    printf("Node Deleted!\n");
+                    break;
+                } else {
+                    temp = temp->next;
+                    while(temp->data != value) {
+                        temp = temp->next;
+                        ptemp = ptemp->next;
+                    }
+                    ptemp->next = temp->next;
+                    free(temp);
+                    printf("Node Deleted!\n");
+                    break;
+                }
+            }
+            case 10: {
+                struct node* prev = NULL;
+                struct node* curr = start;
+                struct node* nxt = NULL;
+
+                if (start == NULL) {
+                    printf("Linked List is Empty!\n");
+                    break;
+                } else if (start->next == NULL) {
+                    printf("Only single element!\n");
+                    break;
+                } else {
+                    while (curr != NULL) {
+                        nxt = curr->next;
+                        curr->next = prev;
+                        prev = curr;
+                        curr = nxt;
+                    }
+
+                    start = prev;
+                    printf("Linked List Reversed!\n");
+                    break;
+                }
+
+                
+                
+            }
+            case 12: {
                 if (start == NULL) {
                     printf("Linked list is empty\n");
                     break;
@@ -168,7 +262,7 @@ int main() {
                 printf("[%d]\n", temp->data);
                 break;
             }
-            case 12: {
+            case 13: {
                 if (start == NULL) {
                     printf("\nGood Bye!! -by APURVA KUMAR");
                     return 0;
