@@ -32,7 +32,7 @@ void showMenu(int* stack) {
     int choice;
     while (1) {
         printf("\n-------------------------\n");
-        printf("1. PUSH\n2. POP\n3. DISPLAY\n4. EXIT\n");
+        printf("1. PUSH\n2. POP\n3. PEEP\n4. EXIT\n");
         printf("-------------------------\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
@@ -47,6 +47,7 @@ void showMenu(int* stack) {
                 display(stack, size);
                 break;
             case 4:
+                printf("Bye Apurva Kumar!");
                 return;
             default:
                 printf("Invalid choice!!");        
