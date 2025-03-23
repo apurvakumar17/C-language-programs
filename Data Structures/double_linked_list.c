@@ -21,20 +21,20 @@ int main() {
     printf("12. Reverse Display\n");
     printf("13. Exit\n");
     int ch, loc, val, len;
+    len = 0;
     struct node *start, *temp, *newnode;
     start = NULL;
     while (1) {
         printf("Enter choice: ");
         scanf("%d", &ch);
         switch (ch) {
-            case 1: 
+            case 1:{
                 newnode = (struct node*) malloc(sizeof(struct node));
                 printf("Enter data of newnode: ");
                 scanf("%d", &newnode->data);
                 newnode->prev = NULL;
                 if (start == NULL) {
                     newnode->next = NULL;
-                    start->prev = newnode;
                     start = newnode;
                 } else {
                     newnode->next = start;
@@ -44,7 +44,8 @@ int main() {
                 len++;
                 printf("Node added at beginning!\n");
                 break;
-            case 2:
+            }
+            case 2:{
                 newnode = (struct node*) malloc(sizeof(struct node));
                 printf("Enter data of newnode: ");
                 scanf("%d", &newnode->data);
@@ -63,7 +64,8 @@ int main() {
                 len++;
                 printf("Node added at end!\n");
                 break;
-            case 3:
+            }
+            case 3:{
                 newnode = (struct node*) malloc(sizeof(struct node));
                 printf("Enter data of newnode: ");
                 scanf("%d", &newnode->data);
@@ -77,22 +79,29 @@ int main() {
                 } else {
                     for (int i = 1; i < loc; i++) {
                         temp = temp->next;
+                        if (temp == NULL) {
+                            printf("Invalid location!\n");
+                            break;
+                        }
                     }
-                    if (temp == start) {
+                    if (temp == NULL) {
+                        break;
+                    } else if (temp == start) {
                         temp->prev = newnode;
                         newnode->next = temp;
                         start = newnode;
                     } else {
                         temp->prev->next = newnode;
-                        temp->next->prev = newnode;
-                        newnode->prev = temp;
-                        newnode->next = temp->next;
+                        temp->prev = newnode;
+                        newnode->prev = temp->prev;
+                        newnode->next = temp;
                     }
                 }
                 len++;
                 printf("Node added at location!\n");
                 break;
-            case 4:
+            }
+            case 4:{
                 newnode = (struct node*) malloc(sizeof(struct node));
                 printf("Enter data of newnode: ");
                 scanf("%d", &newnode->data);
@@ -121,7 +130,8 @@ int main() {
                 len++;
                 printf("Node added!\n");
                 break;
-            case 5:
+            }
+            case 5:{
                 newnode = (struct node*) malloc(sizeof(struct node));
                 printf("Enter data of newnode: ");
                 scanf("%d", &newnode->data);
@@ -137,22 +147,16 @@ int main() {
                     while(temp->data != val) {
                         temp = temp->next;
                     }
-                    if (temp == start) {
-                        newnode->next = NULL;
-                        temp->next = newnode;
-                        newnode->prev = temp;
-                    } else {
-                        temp->next->prev = newnode;
-                        newnode->next = temp->next;
-                        newnode->prev = temp;
-                        temp->next = newnode;
-                    }
-
+                    temp->next->prev = newnode;
+                    newnode->next = temp->next;
+                    newnode->prev = temp;
+                    temp->next = newnode;
                 }
                 len++;
                 printf("Node added!\n");
                 break;
-            case 6:
+            }
+            case 6:{
                 temp = start;
                 if (temp == NULL) {
                     printf("Linked List is Empty!\n");
@@ -163,25 +167,33 @@ int main() {
                 len--;
                 printf("First Node Deleted!\n");
                 break;
-            case 7:
+            }
+            case 7:{
                 temp = start;
-                if (temp ==NULL) {
+                if (temp == NULL) {
                     printf("Linked List is empty!\n");
                     break;
                 } else {
                     while (temp->next != NULL) {
                         temp = temp->next;
                     }
-                    temp->prev->next = NULL;
+                    if (temp == start) {
+                        start = NULL;
+                    } else {
+                        temp->prev->next = NULL;
+                    }
                 }
                 len--;
                 printf("Last Node Deleted!\n");
                 break;
-            case 8:
+            }
+            case 8:{
                 temp = start;
                 if (temp == NULL) {
                     printf("Linked List is empty!\n");
+                    break;
                 } else {
+                    printf("Number of Elements: %d\n", len);
                     printf("Enter the location: ");
                     scanf("%d", &loc);
                     if (loc > len || loc <= 0) {
@@ -203,7 +215,8 @@ int main() {
                 }
                 printf("Node at location deleted!\n");;
                 break;
-            case 9:
+            }
+            case 9:{
                 temp = start;
                 if (temp == NULL) {
                     printf("Linked List is Empty!\n");
@@ -212,26 +225,32 @@ int main() {
                     int found = 0;
                     printf("Enter the value to delete: ");
                     scanf("%d", &val);
-                    while (temp->data != val || temp->next != NULL) {
+                    while (temp!= NULL) {
+                        if (temp->data == val) {
+                            found = 1;
+                            if (temp->next == NULL) {
+                                temp->prev->next = NULL;
+                            } else if (temp == start) {
+                                start = start->next;
+                            } else {
+                                temp->prev->next = temp->next;
+                                temp->next->prev = temp->prev;
+                            }
+                        }
                         temp = temp->next;
                     }
-                    if (temp->data == val) {
-                        found = 1;
-                    }
-                    if (temp->next == NULL) {
-                        if (!found) {
-                            printf("Value not found in linked list!\n");
-                            break;
-                        }
-                        temp->prev->next = NULL;
+                    if (!found) {
+                        printf("Value not found in linked list!\n");
+                        break;
                     } else {
-                        temp->prev->next = temp->next;
-                        temp->next->prev = temp->prev;
+                        printf("Node Deleted!\n");
+                        break;
                     }
-                    printf("Node Deleted!\n");
+                    
                 }
                 break;
-            case 10:
+            }
+            case 10:{
                 if (start == NULL) {
                     printf("Double Linked List is Empty!\n");
                     break;
@@ -241,12 +260,49 @@ int main() {
                         printf("[%d]-", temp->data);
                         temp = temp->next;
                     }
-                    printf("[%d]",temp->data);
+                    printf("[%d]\n",temp->data);
                 }
                 break;
-            case 11:
-                
-                
+            }
+            case 11:{
+                int tdata;
+                for (int i = 0; i < len; i++) {
+                    while(temp->next != NULL) {
+                        if (temp->data > temp->next->data) {
+                            tdata = temp->data;
+                            temp->data = temp->next->data;
+                            temp->next->data = tdata;
+                        }
+                        temp = temp->next;
+                    }
+                    temp = start;
+                }
+                printf("SWAPPED!\n");
+                break;
+            }
+            case 12:{
+                if (start == NULL) {
+                    printf("Double Linked List is Empty!\n");
+                    break;
+                } else {
+                    temp = start;
+                    while (temp->next != NULL) {
+                        temp = temp->next;
+                    }
+                    while (temp->prev != NULL) {
+                        printf("[%d]-", temp->data);
+                        temp = temp->prev;
+                    }
+                    printf("[%d]\n",temp->data);
+                }
+                break;
+            }
+            case 13:{
+                printf("Bye Apurva!");
+                return 0;
+            }
+            default:
+                printf("Invalid Choice!\n");
         }
     }
 }
