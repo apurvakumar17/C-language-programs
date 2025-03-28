@@ -43,13 +43,13 @@ int main() {
                 } else {
                     data = queue[front];
                     printf("Popped Element: %d\n", data);
-                    printf("front: %d\nrear: %d\n\n", front, rear);
                     front++;
-                    if (front == rear) {
+                    if (front - 1 == rear) {
                         front = rear = -1;
-                    } else if (rear < front && front == SIZE - 1) {
+                    } else if (rear < front && front == SIZE) {
                         front = 0;
                     }
+                    printf("front: %d\nrear: %d\n\n", front, rear);
                 }
                 break;
             case 3:
@@ -57,14 +57,33 @@ int main() {
                     printf("Queue is Empty!\n");
                     printf("front: %d\nrear: %d\n\n", front, rear);
                 } else {
-                    int i = front - 1;
-                    while(i != rear + 1) {
-                        printf("%d|", queue[i]);
-                        i++;
-                        if (rear < front && i == SIZE - 1) {
-                            i = 0;
+                    int i = front;
+                    /*if (rear < front) {
+                        while(i != rear) {
+                            printf("%d|", queue[i]);
+                            i++;
+                            if (i == SIZE) {
+                                i = 0;
+                            }
                         }
+                    } else {
+                        while(i != rear + 1) {
+                            printf("%d|", queue[i]);
+                            i++;
+                            if (rear < front && i == SIZE) {
+                                i = 0;
+                            }
+                            // i = (i + 1) % SIZE;
+                        }
+                    }*/
+                    while (1) {
+                        printf("%d|", queue[i]);
+                        if (i == rear) {
+                            break;
+                        }
+                        i = (i + 1) % SIZE;
                     }
+                    
                 }
                 printf("\n");
                 break;
