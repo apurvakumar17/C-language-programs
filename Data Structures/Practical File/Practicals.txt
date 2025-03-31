@@ -5,4 +5,14 @@ Q2. Create 2D array Arr[4][5], accept values. Display computed address of Arr[2]
 Q3. WAP to store tridiagonal matrix in 1D array
 Q4. WAP to accept sparse matrix 3x4 and store it in 3-tupple representation and display in 3x4 format.
 Q5. Company wants to store Aadhar No. of 150 employees. Store 10 aadhar no. using hashing division method and retrieve the location of an aadhar entered by user in array. Use  two methods to store data in two arrays Arr1 and Arr2
-i) Mid Square Method ii) Folding Method
+i) Mid Square Method 
+ii) Folding Method
+
+Q6. Write a program to create single linked list with operations- add at beg, add at end, add after node value, add at location, delete from beg, delete from end, delete from specific location, traverse, sort, reverse.
+Q7. Write a program to create double linked list with operations- add at beg, add at end, add after node value, add at location, delete from beg, delete from end, delete from specific location, traverse, sort, reverse.
+Q8. Write a program to create circular double linked list with operations- add at beg, add at end, add after node value, add at location, delete from beg, delete from end, delete from specific location, traverse, sort, reverse.
+Q9. Create stack using array and perform push, pop and traversal operations.
+Q10. Create stack using single linked list with operations- push, pop, peep.
+Q11. Create queue using array, perform push, pop and traversal operations.
+Q12. Create circular queue using array, perform push, pop and traversal operations.
+Q13. Create double ended queue using array, perform push, pop and traversal operations.
