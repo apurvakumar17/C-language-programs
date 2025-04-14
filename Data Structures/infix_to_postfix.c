@@ -41,10 +41,11 @@ char peek(char* st) {
 }
 
 int main() {
-    // char Q[30] = "A+(B*C-(D/E^F)*G)+H";
+    char Q[30] = "A+B*(C^D-E)^(F+G*H)-I";
+    // char Q[30] = "A+(B*C-(D/E^F)*G)*H";
     // char Q[30] = "(A+B)^C-(D-E)^(F+G)";
-    // char Q[30] = "A+B*C+D";
-    char Q[30] = "A+B*(D-C)+E^F+G";  //infix expression
+    // char Q[30] = "A+B/C-D";
+    // char Q[30] = "A+B*(D-C)+E^F+G";  //infix expression
     char P[20] = {};       //postfix expression
     char stack[30] = {};     //temporary stack
     push('(', stack); 
