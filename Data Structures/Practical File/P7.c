@@ -92,6 +92,57 @@ int main() {
             case 4: {
                 printf("Enter location: ");
                 scanf("%d", &loc);
+                
+                if (loc < 1) {
+                    printf("Invalid location!\n");
+                    break;
+                }
+                
+                newnode = (struct node*) malloc(sizeof(struct node));
+                printf("Enter node data: ");
+                scanf("%d", &newnode->data);
+            
+                if (start == NULL) {
+                    if (loc == 1) {
+                        newnode->next = NULL;
+                        newnode->prev = NULL;
+                        start = newnode;
+                        printf("Node added at position 1!\n");
+                    } else {
+                        printf("Invalid location! List is empty.\n");
+                        free(newnode);
+                    }
+                } else if (loc == 1) {
+                    newnode->next = start;
+                    newnode->prev = NULL;
+                    start->prev = newnode;
+                    start = newnode;
+                    printf("Node added!\n");
+                } else {
+                    temp = start;
+                    int i = 1;
+                    while (i < loc - 1 && temp->next != NULL) {
+                        temp = temp->next;
+                        i++;
+                    }
+                    if (i != loc - 1) {
+                        printf("Invalid location!\n");
+                        free(newnode);
+                    } else {
+                        newnode->next = temp->next;
+                        newnode->prev = temp;
+                        if (temp->next != NULL) {
+                            temp->next->prev = newnode;
+                        }
+                        temp->next = newnode;
+                        printf("Node added!\n");
+                    }
+                }
+                break;
+            }
+            /*case 4: {
+                printf("Enter location: ");
+                scanf("%d", &loc);
                 newnode = (struct node*) malloc(sizeof(struct node));
                 printf("Enter node data: ");
                 scanf("%d", &newnode->data);
@@ -117,6 +168,7 @@ int main() {
                 printf("Node added!\n");
                 break;
             }
+            */
             case 5: {
                 if (start == NULL) {
                     printf("Double Linked List is empty!\n");

@@ -73,8 +73,8 @@ int main() {
                 break;
             }
             case 4: {
-                return 0;
                 printf("\nApurva Kumar 04814902024\n");
+                return 0;
             }
             default: {
                 printf("Invalid choice!\n");
