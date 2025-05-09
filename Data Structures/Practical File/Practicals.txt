@@ -16,3 +16,17 @@ Q10. Create stack using single linked list with operations- push, pop, peep.
 Q11. Create queue using array, perform push, pop and traversal operations.
 Q12. Create circular queue using array, perform push, pop and traversal operations.
 Q13. Create double ended queue using array, perform push, pop and traversal operations.
+
+Q14. Write program to convert infix to postfix expression.
+Q15. Write program to evaluate given postfix expression.
+Q16. Write a program to create Binary Search Tree with following operations: Insert, Delete, Inorder Traversal, Preorder Traversal and Post order Traversal.
+
+Q17. Create a static array of 6 elements ={13,11,43,26,35,9}. Accept a number and find the index value of that element using linear search.
+Q18. Create two static sorted arrays A={1,10,32,50}  B={2,12,60}. Write program to merge two sorted arrays into one sorted array C. 
+Q19. Create a static array with elements  ={99,35,46,12,24}. Write function to sort array using insertion sort in ascending order display.
+Q20. Write a program to accept 5 integers in array. Accept location from user and a new number and place the new number at the specified location by shifting elements towards right.
+Q21. Write a program to calculate sum of digits of factorial of a number. Ex !10=3628800 , 3+6+2+8+8+0+0=27 : Input =10 Output=27 
+Q22. Find the sum of all Multiples of 3 or 5 of a given number. Example number =10, we get 3,5,6,9=23 
+Q23. Create an integer array A[10], character array B [10], accept values in the Array. Display the computed address of A[5]and B [8] and actual address by computer. 
+Q24. WAP to accept 3x4 matrix and find whether it is lower triangular, upper triangular, tridiagonal
+Q25. Display 3 Tuple Representation of 3X4 matrix in 3X4 format. 
